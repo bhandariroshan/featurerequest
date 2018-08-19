@@ -2,7 +2,7 @@ version: '2'
 services:
     web:
         build: .
-        command: python3 app/runserver.py
+        command: python3 runserver.py
         volumes:
             - .:/usr/src/app
         ports:

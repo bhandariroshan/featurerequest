@@ -1,4 +1,3 @@
-from flask import Flask
 from views import MainHandler, JSHandler, CSSHandler, FeatureHandler
 from settings import app
 
