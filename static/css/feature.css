@@ -1,0 +1,14 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    width: 40%;
+    float: none;
+    margin: auto;
+}
+
+h3{
+     text-align: center;
+}
+.form-group{
+    padding: 5px;
+    margin-bottom: 0rem;
+}
