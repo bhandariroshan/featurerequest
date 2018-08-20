@@ -30,35 +30,35 @@ The following are requirements on the tech stack. This stack demonstrates master
 
 Make sure that your instructions for accessing or otherwise running your code are extremely clear.
 
-## Guidelines
+## Running the project with `` docker-compose up ``
 
-One of the major goals in this project is to see how you fill in ambiguities in your own creative
-way. There is no such thing as a perfect project here, just interpretations of the instructions
-above, so be creative in your approach.
-
-We want to be respectful of your time and set realistic expectations for submission. To help guide you, we 
-have included the list below which details common practices in the best projects we receive. It is rare for 
-a project to match every item in this list, but the candidates we hire typically showcase several of 
-these features in their work.
+If you have docker-compose installed on your ubuntu machine, the project runs with a single command i.e `` docker-compose up ``
 
 --
 
-TECHNOLOGY
+TECHNOLOGY AND ARCHITECTURE
 
-1. *Open Source*. We have a strong affinity for open source technology. If your go-to technology stack includes
-proprietary software, you won't be helping yourself to use it in this project.
+1. *Open Source:* uses python, flask, sqlalchemy as orm, mysql as database
 
-2. *Decoupled Backend*. We are looking for candidates with a strong understanding of the entire web application stack. The best projects will completely decouple the backend and the front end and communciate via API.
+2. *Decoupled Backend: * There are following modules in the system:
+- urls.py: servers as router, contains api endpoint configuration
+- models.py: contains model for table definition on top of mysql database
+- manager.py: manager class for all the models in models, handles logical aspect of crud opretaion
+- settings.py: contains configuration details
+- views.py: logical aspect of url routing 
+- testfiles.py: contains all the testcases for api end points
+- static fodler: contains all the static files
+- templates: contains templates
 
-3. *Test Suites with Continuous Integration*. Enterprise production requires rock solid stability. All code submitted into BriteCore repos must contain unit and regressions tests, so we favor candidates with experience writing quality tests.
+3. *Test Suites with Continuous Integration*. all the unit test for api end points are kept inside testfiles.
 
-4. *Automated Deployment*. Speaking of deployment, the most valuable engineers understand how their code is deployed and practice "infrastructure as code". The best projects integrated CI with a fully automated deployment to AWS, Digital Ocean, or similar.
+4. *Automated Deployment*. Automated deployment to AWS using Jenkins has been configured at:
+http://ec2-54-234-232-117.compute-1.amazonaws.com:8080/
 
-5. *Usable, Responsive Interface*. There are many accessible CSS frameworks out there such as Bootstrap. All modern web applications should be responsive and these frameworks make it very easy to create a modern interface that adheres to established design principles and formats well on all devices.
+5. *Usable, Responsive Interface*. For responsive UI, bootstrap has been used. Datatable has been used for listing feature request.
 
-6. *MVVM Frontend*. The modern web is highly interactive. Projects like Knockout.js make it very easy to deploy HTML bindings that interact with interface elements dependably and efficiently.
+6. *MVVM Frontend*. Projects uses Knockout.js.
 
 --
 
-Thank you for your time. We are excited to review your project!
-
+Thank you for your time.

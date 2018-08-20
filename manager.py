@@ -35,13 +35,20 @@ class FeatureRequestManager(object):
         results = FeatureRequest.query.all()
         return results
 
+    def drop_all_features(self):
+        """
+
+        :return:
+        """
+        return FeatureRequest.query.delete()
+
     def update_records(self, priority, client):
         """
 
         :return:
         """
-        print(client, '**********************')
-        db.session.query(FeatureRequest).filter(FeatureRequest.client_priority >= priority, FeatureRequest.client == client).update(
+        db.session.query(FeatureRequest).filter(
+            FeatureRequest.client_priority >= priority, FeatureRequest.client == client).update(
             {"client_priority": (FeatureRequest.client_priority + 1)}
         )
         db.session.commit()

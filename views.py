@@ -61,3 +61,10 @@ class FeatureHandler(MethodView):
                 'productArea': each_data.product_area
             })
         return jsonify({'data': return_data})
+
+
+class DropFeatureHandler(MethodView):
+    def get(self):
+        manager = FeatureRequestManager()
+        manager.drop_all_features()
+        return jsonify({'status': 'Successfully saved a request.'})

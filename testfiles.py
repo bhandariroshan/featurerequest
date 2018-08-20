@@ -1,25 +1,35 @@
-import os
-import unittest
-import tempfile
 from settings import app
+import unittest
+import requests
+import json
+import sys
+import subprocess
 
 
-class FlaskrTestCase(unittest.TestCase):
-
+class TestFlaskApiUsingRequests(unittest.TestCase):
     def setUp(self):
-        self.db_fd, app.config['DATABASE'] = tempfile.mkstemp()
-        app.testing = True
-        self.app = app.test_client()
+        subprocess.call('docker-compose up & ', shell=True)
 
-    def tearDown(self):
-        os.close(self.db_fd)
-        os.unlink(app.config['DATABASE'])
+    def test_drop_all_data(self):
+        response = requests.get('http://localhost:5001/feature/dropall/')
+        self.assertEqual(response.json(), {'status': 'Successfully saved a request.'})
 
-    def test_empty_db(self):
-        rv = self.app.get('/')
-        print(rv.data)
-        assert b'No entries here so far' in rv.data
+    def test_api_create_feature_request(self):
+        data={}
+        data['title'] = 'Test Title'
+        data['description'] = 'Test Description'
+        data['client'] = 'Client A'
+        data['priority'] = 1
+        data['targetDate'] = '2018-8-21'
+        data['productArea'] = 'Policies'
 
+        response = requests.post('http://localhost:5001/feature/create/', data=json.dumps(data))
+        self.assertEqual(response.json(), {'status': 'Successfully saved a request.'})
+
+    def test_api_get_feature_request(self):
+        rv = requests.post('http://localhost:5001/feature/getall/')
+        data = rv.json()
+        self.assertGreaterEqual(len(data['data']), 1)
 
 if __name__ == '__main__':
     unittest.main()
