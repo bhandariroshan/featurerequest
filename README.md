@@ -36,7 +36,20 @@ If you have docker-compose installed on your ubuntu machine, the project runs wi
 
 --
 
-TECHNOLOGY AND ARCHITECTURE
+## Running the project in windows machine
+- Install python
+- Install mysql
+- Install requirements using pip install -r requirementx.txt
+- Create database engineering
+- Change the hostname in database string at settings.py to localhost
+- run the project using python runserver.py
+
+## Visit Live Project
+
+The project is hosted live at http://ec2-54-234-232-117.compute-1.amazonaws.com:5001
+
+
+## TECHNOLOGY AND ARCHITECTURE
 
 1. *Open Source:* uses python, flask, sqlalchemy as orm, mysql as database
 
