@@ -35,6 +35,17 @@ class FeatureRequestManager(object):
         results = FeatureRequest.query.all()
         return results
 
+    def update_records(self, priority, client):
+        """
+
+        :return:
+        """
+        print(client, '**********************')
+        db.session.query(FeatureRequest).filter(FeatureRequest.client_priority >= priority, FeatureRequest.client == client).update(
+            {"client_priority": (FeatureRequest.client_priority + 1)}
+        )
+        db.session.commit()
+
     def get_feature_request_by_id(self):
         """
 

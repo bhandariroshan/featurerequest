@@ -27,6 +27,7 @@ class MainHandler(MethodView):
     def post(self):
         post_data = json.loads(str(request.data).replace('b\'','').replace('\'',''))
         manager = FeatureRequestManager()
+        manager.update_records(post_data['priority'], post_data['client'])
         manager.create_feature_request(
             title=post_data['title'],
             description=post_data['description'],
